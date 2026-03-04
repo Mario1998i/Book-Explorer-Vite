@@ -6,6 +6,13 @@ import { renderBooks, renderDescription } from "./ui.js";
 // 1. Selezioniamo gli elementi dal DOM
 const searchBtn = document.getElementById("search-btn");
 const categoryInput = document.getElementById("category-input");
+const resultsContainer = document.getElementById("results");
+const descriptionsContainer = document.getElementById("description");
+
+async function handleBookClick(key) {
+    const description = await fetchBookDetails(key);
+    renderDescription(description, descriptionsContainer);
+}
 
 // 2. Ascoltiamo il click sul bottone
 searchBtn.addEventListener("click", async () => {
@@ -20,9 +27,5 @@ searchBtn.addEventListener("click", async () => {
     // 5. Chiamata all'API: QUI nasce 'books'
     const books = await fetchBooksByCategory(category);
 
-    async function handleBookClick(key) {
-        const description = await fetchBookDetails(key);
-        renderDescription(description);
-    }
-    renderBooks(books, handleBookClick);
+    renderBooks(books, resultsContainer, handleBookClick);
 })

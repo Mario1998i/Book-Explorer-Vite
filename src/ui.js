@@ -3,12 +3,11 @@ export function extractAuthorNames(book) {
     return names ? `Autori: ${names}` : "Autori non trovati.";
 }
 
-export function renderBooks(books, onBookClick) {
-    const resultsContainer = document.getElementById("results");
-    resultsContainer.innerHTML = "";
+export function renderBooks(books, container, onBookClick) {
+    container.innerHTML = "";
 
     if (books.length === 0) {
-        resultsContainer.innerHTML = "<p>Nessun libro trovato.";
+        container.innerHTML = "<p>Nessun libro trovato.</p>";
         return;
     }
 
@@ -29,15 +28,21 @@ export function renderBooks(books, onBookClick) {
 
         bookEl.appendChild(title);
         bookEl.appendChild(authors);
-        resultsContainer.appendChild(bookEl);
+        container.appendChild(bookEl);
     });
 }
 
-export function renderDescription(description) {
-    const descriptionsContainer = document.getElementById("description");
-    descriptionsContainer.innerHTML = 
-    `<h2>Descrizione</h2>
-    <p>${description}</p>`;
+export function renderDescription(description, container) {
+    container.innerHTML = "";
 
-    descriptionsContainer.style.display = "block";
+    const title = document.createElement("h2");
+    title.textContent = "Descrizione";
+
+    const paragraph = document.createElement("p");
+    paragraph.textContent = description;
+
+    container.appendChild(title);
+    container.appendChild(paragraph);
+
+    container.style.display = "block";
 } 
