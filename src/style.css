@@ -77,6 +77,13 @@ main {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.search-section button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
 .search-section button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(195, 139, 65, 0.4);

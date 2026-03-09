@@ -16,6 +16,9 @@ async function handleBookClick(key) {
 
 // 2. Ascoltiamo il click sul bottone
 searchBtn.addEventListener("click", async () => {
+    searchBtn.textContent = "Ricerca...";
+    searchBtn.disabled = true;
+
     descriptionsContainer.innerHTML = "";
     descriptionsContainer.style.display = "none";
     // 3. Leggiamo il valore inserito dall'utente
@@ -30,4 +33,7 @@ searchBtn.addEventListener("click", async () => {
     const books = await fetchBooksByCategory(category);
 
     renderBooks(books, resultsContainer, handleBookClick);
+
+    searchBtn.textContent = "Cerca";
+    searchBtn.disabled = false;
 })
