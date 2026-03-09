@@ -16,6 +16,8 @@ async function handleBookClick(key) {
 
 // 2. Ascoltiamo il click sul bottone
 searchBtn.addEventListener("click", async () => {
+    descriptionsContainer.innerHTML = "";
+    descriptionsContainer.style.display = "none";
     // 3. Leggiamo il valore inserito dall'utente
     const category = categoryInput.value.trim();
     // 4. Validazione base
